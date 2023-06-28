@@ -21,3 +21,5 @@ TractSeg is the code for the following paper. Please cite the papers if you use 
 [Nature Neuropsychopharmacology 2020]
 * Our paper:
 [Investigation-of-Learning-Based-Tractography-via-TractSeg](https://docs.google.com/document/d/1C-hySU6B40irJ9qYQEmq3ZsKKJGbyQrL8rBAhQPRZSM/edit?usp=sharing)
+
+Please follow this [website](https://github.com/MIC-DKFZ/TractSeg) to train your own model
