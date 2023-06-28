@@ -19,5 +19,5 @@ TractSeg is the code for the following paper. Please cite the papers if you use 
 * Tractometry:  
 [Multiparametric mapping of white matter microstructure in catatonia](https://www.nature.com/articles/s41386-020-0691-2) ([free preprint](resources/Wasserthal2020_Multiparametric_mapping_of_white_matter.pdf))
 [Nature Neuropsychopharmacology 2020]
-*Our paper:
+* Our paper:
 [Investigation-of-Learning-Based-Tractography-via-TractSeg](https://docs.google.com/document/d/1C-hySU6B40irJ9qYQEmq3ZsKKJGbyQrL8rBAhQPRZSM/edit?usp=sharing)
