@@ -1,0 +1,53 @@
+fslroi data.nii.gz b0.nii.gz 0 1 
+
+tckmap all_tracks.tck -contrast tdi tdi.nii.gz -template b0.nii.gz
+fslmaths tdi.nii.gz -bin mask.nii.gz
+fslmerge -t mask.nii.gz mask1.nii.gz mask2.nii.gz mask3.nii.gz mask4.nii.gz mask5.nii.gz mask6.nii.gz
+mrcat *.nii.gz haha/result.nii.gz
+
+fslmerge -t 4D.nii.gz 100610/data.nii.gz 102311/data.nii.gz 102816/data.nii.gz 104416/data.nii.gz 105923/data.nii.gz 
+
+fslmaths 4D.nii.gz -Tmean avg.nii.gz
+
+mrinfo
+
+sbatch -p general -N 1 --mem=200g -n 1 -c 16 -t 7- --wrap="python3 run.py"
+
+sbatch -p general -N 1 --mem=500g -n 1 -c 16 -t 7- --wrap="python3 wkd.py"
+
+squeue -u zyc626
+
+sbatch -N 1 -n 1 -p gpu --mem=40g -t 02-00:00:00 --qos gpu_access --gres=gpu:1 --wrap="ExpRunner --config my_custom_experiment"
+
+
+sbatch -p general -N 1 --mem=500g -n 1 -c 16 -t 10- --wrap="ExpRunner --config my_custom_experiment"
+
+/mnt/yaplab/data/yicheng
+
+/pine/scr/z/y/zyc626/dti
+
+TractSeg -i mrtrix_peaks.nii.gz --output_type tract_segmentation --bvals bvals --bvecs bvecs --exp_name my_custom_experiment
+
+TractSeg -i mrtrix_peaks.nii.gz --output_type endings_segmentation --bvals bvals --bvecs bvecs --exp_name my_custom_experiment_2_x2
+
+TractSeg -i mrtrix_peaks.nii.gz --output_type TOM --bvals bvals --bvecs bvecs --exp_name my_custom_experiment_3
+
+Tracking -i mrtrix_peaks.nii.gz
+
+
+scp zyc626@longleaf.unc.edu:/pine/scr/z/y/zyc626/191841/COMMIT/Results_StickZeppelinBall_COMMIT2/streamline_weights.txt /Users/zyc626/Desktop/HCP_new/191841
+
+demo01_fibers_connecting.tck 
+
+
+
+
+Tckmap -tod 2 -template b0.nii.gz  cluster0.tck output.nii.gz
+sh2peaks output.nii.gz peaks.nii.gz
+TractSeg -i peaks.nii.gz --output_type tract_segmentation --bvals bvals --bvecs bvecs
+TractSeg -i peaks.nii.gz --output_type endings_segmentation --bvals bvals --bvecs bvecs
+TractSeg -i peaks.nii.gz --output_type TOM --bvals bvals --bvecs bvecs --brain_mask nodif_brain_mask.nii.gz 
+
+cd /work/users/z/y/zyc626/cnm
+
+
